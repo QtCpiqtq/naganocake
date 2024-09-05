@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+  scope module: :public do
+    get 'customers/mypage', to: 'customers#show', as: 'mypage'
+    get 'customers/infomation/edit', to: 'customers#edit'
+    patch 'customer/infomation', to: 'customers#update'
+    get 'customers/unsubscribe'
+    patch 'customers/withdraw'
+  end
+ 
  devise_for :admin, controllers: {
   sessions: "admin/sessions"
 }
