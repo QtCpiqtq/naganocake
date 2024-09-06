@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   root 'homes#top'
   get 'homes/about', as: "about"
   
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
     patch 'customer/infomation', to: 'customers#update'
     get 'customers/unsubscribe'
     patch 'customers/withdraw'
+    resources :addresses, except: [:new, :show]
   end
  
  devise_for :admin, controllers: {
