@@ -22,8 +22,11 @@ end
 
 scope module: :admin do
   resources :genres, only: [:index, :create, :edit, :update]
-  resources :customers
+  resources :customers, except: [:new, :post, :destroy]
 end
 
+namespace :admin do
+  resources :items
+end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
