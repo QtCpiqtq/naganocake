@@ -15,6 +15,10 @@ scope module: :public do
   patch 'customers/withdraw'
   resources :addresses, except: [:new, :show]
 end
+
+namespace :public do
+  resources :items, only: [:index, :show]
+end
  
  devise_for :admin, controllers: {
   sessions: "admin/sessions"
@@ -26,7 +30,7 @@ scope module: :admin do
 end
 
 namespace :admin do
-  resources :items
+  resources :items, except: [:destroy]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
