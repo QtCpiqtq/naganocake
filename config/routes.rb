@@ -14,12 +14,14 @@ scope module: :public do
   get 'customers/unsubscribe'
   patch 'customers/withdraw'
   resources :addresses, except: [:new, :show]
+  resources :cart_items, except: [:new, :edit, :show]
+  delete 'destroy_all_cart_items', to: 'cart_items#destroy_all', as: 'destroy_all_cart_items'
+  resources :items, only: [:index, :show]
+  resources :orders
+  get 'orders/confirm'
+  get 'orders/completion'
 end
 
-namespace :public do
-  resources :items, only: [:index, :show]
-end
- 
  devise_for :admin, controllers: {
   sessions: "admin/sessions"
 }
