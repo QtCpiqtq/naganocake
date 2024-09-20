@@ -10,17 +10,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render 'layouts/header' %>
-    
-    <% if notice %>
-      <%= notice %>
-    <% end %>
-    
-    <% if alert %>
-      <%= alert %>
-    <% end %>
-    
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+  <%= render 'layouts/header' %>
+    <div class="container-fluid mb-auto">
+      <% if notice %>
+        <%= notice %>
+      <% end %>
+      
+      <% if alert %>
+        <%= alert %>
+      <% end %>
+      
+      <%= yield %>
+    </div>
   </body>
 </html>
