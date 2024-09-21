@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about', as: "about"
-  
+
   devise_for :customers, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -18,8 +18,8 @@ scope module: :public do
   delete 'destroy_all_cart_items', to: 'cart_items#destroy_all', as: 'destroy_all_cart_items'
   resources :items, only: [:index, :show]
   resources :orders
-  get 'orders/confirm'
-  get 'orders/completion'
+  get 'confirm_order', to: 'orders#confirm', as: 'confirm_order'
+  get 'completion_order', to: 'orders#completion', as: 'completion_order'
 end
 
  devise_for :admin, controllers: {
