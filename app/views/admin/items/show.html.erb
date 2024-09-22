@@ -1,0 +1,36 @@
+<h2>商品詳細</h2>
+
+<%= image_tag @item.image.variant(resize_to_fill: [200, 200]).processed %>
+
+<table>
+  <tr>
+    <td>商品名</td>
+    <td>
+      <%= @item.name %>
+    </td>
+  </tr><tr>
+    <td>商品説明</td>
+    <td>
+      <%= @item.introduction %>
+    </td>
+  </tr>
+  <tr>
+    <td>ジャンル</td>
+    <td>
+      <%= @genre.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>税込価格(税抜価格)</td>
+    <td>
+      <%= (@item.price * 1.1).round %>(<%= @item.price %>)円
+    </td>
+  </tr><tr>
+    <td>販売ステータス</td>
+    <td>
+      <%= @item.is_active %>
+    </td>
+  </tr>
+</table>
+
+<%= link_to "編集する", edit_admin_item_path(@item.id) %>

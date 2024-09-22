@@ -1,0 +1,14 @@
+<%= render "genre_search", genre: @genre %>
+
+<h2>商品一覧</h2>
+<h3>(全<%= @items.count %>件)</h3>
+
+<% @items.each do |item| %>
+  <%= image_tag item.image.variant(resize_to_fill: [200, 200]).processed %>
+  <%= link_to item_path(item.id) do %>
+    <%= item.name %>
+  <% end %>
+  ￥<%= item.with_tax_price %>
+<% end %>
+
+<%= paginate @items %>

@@ -1,0 +1,9 @@
+<p><b>ジャンル検索</b></p>
+
+<% genre.each do |genre| %>
+  <% if genre.items.present? %>
+    <%= link_to genre.name, items_path(genre_search: genre.id) %>
+  <% else %>
+    <%= genre.name %>
+  <% end %>
+<% end %>
