@@ -30,31 +30,31 @@
 <table>
   <tr>
     <th>送料</th>
-    <td><%= @shipping_fee %></td>
+    <td><%= @order.shipping_fee %></td>
   </tr>
   <tr>
     <th>商品合計</th>
-    <td><%= @total %></td>
+    <td><%= @order.price %></td>
   </tr>
   <tr>
     <th>請求金額</th>
-    <td><%= @shipping_fee + @total %></td>
+    <td><%= @order.shipping_fee + @order.price %></td>
   </tr>
 </table>
 
 <h4>支払方法</h4>
-<%= @payment_method %>
+<%= @order.payment_method %>
 
 <h4>お届け先</h4>
-<%= "〒" + @postal_code + " " + @address %>
-<%= @name %>
+<%= "〒" + @order.postal_code + " " + @order.address %>
+<%= @order.name %>
 
-<%= form_with model: @orders, url: orders_path, method: :post do |f| %>
-  <%= f.hidden_field :postal_code, :value => @postal_code %>
-  <%= f.hidden_field :address, :value => @address %>
-  <%= f.hidden_field :name, :value => @name %>
-  <%= f.hidden_field :payment_method, :value => @payment_method %>
-  <%= f.hidden_field :price, :value => @total %>
-  <%= f.hidden_field :shipping_fee, :value => @shipping_fee %>
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+  <%= f.hidden_field :postal_code %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :price %>
+  <%= f.hidden_field :shipping_fee %>
   <%= f.submit "注文を確定する" %>
 <% end %>
